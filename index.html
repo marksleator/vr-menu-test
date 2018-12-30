@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>VR Menu Prototype</title>
-  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-  <script src="js/aframe.js"></script>
+  <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+  
 </head>
 
 <body>
@@ -35,11 +35,11 @@
     <a-entity id="scene1">
       <a-sky background="color: red"></a-sky>
       
-        <a-box color="red" position="-10 1 10" rotation="0 90 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneFarm()"></a-box>
+        <a-box id="boxOne" color="red" position="-10 1 10" rotation="0 90 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneFarm()"></a-box>
         
-      <a-box color="yellow" position="-10 1 2" rotation="0 45 0" geometry="primitive: box; width: 7; height: 5; depth: 0" onclick="setSceneStore()"></a-box>
-      <a-box color="blue" position="8 1 4" rotation="0 -45 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneMeeting()"> </a-box>
-      <a-box color="green" position="10 1 11" rotation="0 -90 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneHome()"> </a-box>
+      <a-box id="boxTwo" color="yellow" position="-10 1 2" rotation="0 45 0" geometry="primitive: box; width: 7; height: 5; depth: 0" onclick="setSceneStore()"></a-box>
+      <a-box id="boxThree" color="blue" position="8 1 4" rotation="0 -45 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneMeeting()"> </a-box>
+      <a-box id="boxFour" color="green" position="10 1 11" rotation="0 -90 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneHome()"> </a-box>
       <a-light id="ambient1" type="ambient" color="#4f6487" >
       <a-animation attribute="intensity" begin="aaa" from="1" to="1" delay="100" dur="1000" fill="both"></a-animation>
       </a-light>
@@ -77,25 +77,45 @@
     document.getElementById('sceneStore').setAttribute('visible', 'false')
     document.getElementById('sceneMeeting').setAttribute('visible', 'false')
     document.getElementById('sceneHome').setAttribute('visible', 'false')
+    document.getElementById('boxOne').setAttribute('onclick', 'setSceneFarm()')
+    document.getElementById('boxTwo').setAttribute('onclick', 'setSceneStore()')
+    document.getElementById('boxThree').setAttribute('onclick', 'setSceneMeeting()')
+    document.getElementById('boxFour').setAttribute('onclick', 'setSceneHome()')
   }
    function setSceneFarm() {
-    document.getElementById('scene1').setAttribute('visible', 'false')
+    document.getElementById('scene1').setAttribute('visible', 'false',)
     document.getElementById('sceneFarm').setAttribute('visible', 'true')
+    document.getElementById('boxOne').removeAttribute('onclick', '')
+    document.getElementById('boxTwo').removeAttribute('onclick', '')
+    document.getElementById('boxThree').removeAttribute('onclick', '')
+    document.getElementById('boxFour').removeAttribute('onclick', '')
   }
 
    function setSceneStore() {
     document.getElementById('scene1').setAttribute('visible', 'false')
     document.getElementById('sceneStore').setAttribute('visible', 'true')
+       document.getElementById('boxOne').removeAttribute('onclick', '')
+    document.getElementById('boxTwo').removeAttribute('onclick', '')
+    document.getElementById('boxThree').removeAttribute('onclick', '')
+    document.getElementById('boxFour').removeAttribute('onclick', '')
   }
 
    function setSceneMeeting() {
     document.getElementById('scene1').setAttribute('visible', 'false')
     document.getElementById('sceneMeeting').setAttribute('visible', 'true')
+       document.getElementById('boxOne').removeAttribute('onclick', '')
+    document.getElementById('boxTwo').removeAttribute('onclick', '')
+    document.getElementById('boxThree').removeAttribute('onclick', '')
+    document.getElementById('boxFour').removeAttribute('onclick', '')
   }
 
    function setSceneHome() {
     document.getElementById('scene1').setAttribute('visible', 'false')
     document.getElementById('sceneHome').setAttribute('visible', 'true')
+       document.getElementById('boxOne').removeAttribute('onclick', '')
+    document.getElementById('boxTwo').removeAttribute('onclick', '')
+    document.getElementById('boxThree').removeAttribute('onclick', '')
+    document.getElementById('boxFour').removeAttribute('onclick', '')
   }
   </script>
 
