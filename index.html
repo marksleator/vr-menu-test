@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <title>VR Menu Prototype</title>
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+  <script src="js/aframe.js"></script>
+</head>
+
+<body>
+  <a-scene >
+    <!--The Assets-->
+    <a-assets>
+        <a-asset-item id="home-ply" src="models/home.ply"></a-asset-item>
+        
+        <img id="farm" src="img/farm-one.JPG">
+        <img id="store" src="img/store-one.jpg">
+        <img id="home" src="img/home-one.JPG">
+        <img id="meeting" src="img/meeting-one.JPG">
+    </a-assets>
+
+    <!--The placement of model-->   
+    <a-entity camera position="0 1 10" look-controls wasd-controls>
+      <a-entity cursor="fuse: true; fuseTimeout: 1000"
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                material="color: black; shader: flat">
+        <a-animation begin="click" easing="ease-in" attribute="scale"
+                     fill="backwards" from="0.1 0.1 0.1" to="1 1 1"></a-animation>
+        <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+                     fill="forwards" from="1 1 1" to="0.1 0.1 0.1"></a-animation>
+      </a-entity>
+    </a-entity>
+
+    <a-entity id="scene1">
+      <a-sky background="color: red"></a-sky>
+      
+        <a-box color="red" position="-10 1 10" rotation="0 90 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneFarm()"></a-box>
+        
+      <a-box color="yellow" position="-10 1 2" rotation="0 45 0" geometry="primitive: box; width: 7; height: 5; depth: 0" onclick="setSceneStore()"></a-box>
+      <a-box color="blue" position="8 1 4" rotation="0 -45 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneMeeting()"> </a-box>
+      <a-box color="green" position="10 1 11" rotation="0 -90 0" geometry="primitive: box; width: 6; height: 4; depth: 0" onclick="setSceneHome()"> </a-box>
+      <a-light id="ambient1" type="ambient" color="#4f6487" >
+      <a-animation attribute="intensity" begin="aaa" from="1" to="1" delay="100" dur="1000" fill="both"></a-animation>
+      </a-light>
+   </a-entity>
+
+   <a-entity id="sceneFarm" visible="false">
+   	<a-sky src="#farm"></a-sky>
+   	<a-box color="white" position="0 0 0" onclick="setScene1()"></a-box>
+   	<a-light id="ambient1" type="ambient" color="#4f6487" >
+   </a-entity>
+
+   <a-entity id="sceneStore" visible="false">
+   	<a-sky src="#store"></a-sky>
+   	<a-box color="white" onclick="setScene1()"></a-box>
+   	<a-light id="ambient1" type="ambient" color="#4f6487" >
+   </a-entity>
+
+   <a-entity id="sceneMeeting" visible="false">
+   	<a-sky src="#meeting"></a-sky>
+   	<a-box color="white" onclick="setScene1()"></a-box>
+   	<a-light id="ambient1" type="ambient" color="#4f6487" >
+   </a-entity>
+
+   <a-entity id="sceneHome" visible="false">
+   	<a-sky src="#home"></a-sky>
+   	<a-box color="white" onclick="setScene1()"></a-box>
+   	<a-light id="ambient1" type="ambient" color="#4f6487" >
+   </a-entity>
+  </a-scene>
+
+  <script type="text/javascript"> 
+  function setScene1() {
+    document.getElementById('scene1').setAttribute('visible', 'true')
+    document.getElementById('sceneFarm').setAttribute('visible', 'false')
+    document.getElementById('sceneStore').setAttribute('visible', 'false')
+    document.getElementById('sceneMeeting').setAttribute('visible', 'false')
+    document.getElementById('sceneHome').setAttribute('visible', 'false')
+  }
+   function setSceneFarm() {
+    document.getElementById('scene1').setAttribute('visible', 'false')
+    document.getElementById('sceneFarm').setAttribute('visible', 'true')
+  }
+
+   function setSceneStore() {
+    document.getElementById('scene1').setAttribute('visible', 'false')
+    document.getElementById('sceneStore').setAttribute('visible', 'true')
+  }
+
+   function setSceneMeeting() {
+    document.getElementById('scene1').setAttribute('visible', 'false')
+    document.getElementById('sceneMeeting').setAttribute('visible', 'true')
+  }
+
+   function setSceneHome() {
+    document.getElementById('scene1').setAttribute('visible', 'false')
+    document.getElementById('sceneHome').setAttribute('visible', 'true')
+  }
+  </script>
+
+</body>
+</html>
